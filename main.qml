@@ -145,14 +145,16 @@ ApplicationWindow {
             id: speedLabel
             width: 450
             height: 450
-            //anchors.bottomMargin: 90
             property bool accelerating
             value: accelerating ? maximumValue : 0
             maximumValue: 250
 
             anchors.top: parent.top
-            anchors.topMargin:Math.floor(parent.height * 0.18)
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.topMargin: Math.floor(parent.height * 0.23)
+
+            // Thay horizontalCenter bằng anchors.right
+            anchors.right: parent.right
+            anchors.rightMargin: Math.floor(parent.width * 0.11)  // cách mép phải 5% chiều rộng
 
             Component.onCompleted: forceActiveFocus()
 
@@ -163,7 +165,7 @@ ApplicationWindow {
                 if (event.key === Qt.Key_Space) {
                     accelerating = false;
                     event.accepted = true;
-                }else if (event.key === Qt.Key_Enter || event.key === Qt.Key_Return) {
+                } else if (event.key === Qt.Key_Enter || event.key === Qt.Key_Return) {
                     radialBar.accelerating = false;
                     event.accepted = true;
                 }
@@ -172,6 +174,7 @@ ApplicationWindow {
             Keys.onEnterPressed: radialBar.accelerating = true
             Keys.onReturnPressed: radialBar.accelerating = true
         }
+
 
         //        Label{
         //            text: "MPH"
