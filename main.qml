@@ -101,7 +101,7 @@ ApplicationWindow {
             Label{
                 id: currentTime
                 text: Qt.formatDateTime(new Date(), "hh:mm")
-                font.pixelSize: 32
+                font.pixelSize: 31
                 font.family: "Inter"
                 font.bold: Font.DemiBold
                 color: "#FFFFFF"
@@ -113,7 +113,7 @@ ApplicationWindow {
             Label{
                 id: currentDate
                 text: Qt.formatDateTime(new Date(), "dd/MM/yyyy")
-                font.pixelSize: 32
+                font.pixelSize: 31
                 font.family: "Inter"
                 font.bold: Font.DemiBold
                 color: "#FFFFFF"
