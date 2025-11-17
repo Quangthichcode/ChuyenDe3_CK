@@ -361,61 +361,85 @@ ApplicationWindow {
           Right Side gear
         */
 
-        RowLayout{
-            spacing: 20
-            anchors{
-                right: parent.right
-                rightMargin: 350
+        RowLayout {
+            anchors {
                 bottom: parent.bottom
-                bottomMargin: 26.50 + 65
+                right: parent.right
+                bottomMargin: 75
+                rightMargin: 200   // khoảng cách từ góc phải
+            }
+            spacing: 100   // khoảng cách giữa các block
+
+            // Block 1
+            ColumnLayout {
+                spacing: 5
+
+                Image {
+                    width: 45
+                    height: 30
+                    source: "qrc:/assets/road.svg"
+                }
+                Label {
+                    text: "188 KM"
+                    font.pixelSize: 20
+                    color: "#FFFFFF"
+                    horizontalAlignment: Text.AlignHCenter
+                }
+                Label {
+                    text: "Distance"
+                    font.pixelSize: 14
+                    color: "#FFFFFF"
+                    horizontalAlignment: Text.AlignHCenter
+                }
             }
 
-            Label{
-                text: "Ready"
-                font.pixelSize: 32
-                font.family: "Inter"
-                font.bold: Font.Normal
-                font.capitalization: Font.AllUppercase
-                color: "#32D74B"
+            // Block 2
+            ColumnLayout {
+                spacing: 5
+
+                Image {
+                    width: 45
+                    height: 30
+                    source: "qrc:/assets/fuel.svg"
+                }
+                Label {
+                    text: "34 mpg"
+                    font.pixelSize: 20
+                    color: "#FFFFFF"
+                    horizontalAlignment: Text.AlignHCenter
+                }
+                Label {
+                    text: "Avg. Fuel Usage"
+                    font.pixelSize: 14
+                    color: "#FFFFFF"
+                    horizontalAlignment: Text.AlignHCenter
+                }
             }
 
-            Label{
-                text: "P"
-                font.pixelSize: 32
-                font.family: "Inter"
-                font.bold: Font.Normal
-                font.capitalization: Font.AllUppercase
-                color: "#FFFFFF"
-            }
+            // Block 3
+            ColumnLayout {
+                spacing: 5
 
-            Label{
-                text: "R"
-                font.pixelSize: 32
-                font.family: "Inter"
-                font.bold: Font.Normal
-                font.capitalization: Font.AllUppercase
-                opacity: 0.2
-                color: "#FFFFFF"
-            }
-            Label{
-                text: "N"
-                font.pixelSize: 32
-                font.family: "Inter"
-                font.bold: Font.Normal
-                font.capitalization: Font.AllUppercase
-                opacity: 0.2
-                color: "#FFFFFF"
-            }
-            Label{
-                text: "D"
-                font.pixelSize: 32
-                font.family: "Inter"
-                font.bold: Font.Normal
-                font.capitalization: Font.AllUppercase
-                opacity: 0.2
-                color: "#FFFFFF"
+                Image {
+                    width: 45
+                    height: 30
+                    source: "qrc:/assets/speedometer.svg"
+                }
+                Label {
+                    text: "78 mph"
+                    font.pixelSize: 20
+                    color: "#FFFFFF"
+                    horizontalAlignment: Text.AlignHCenter
+                }
+                Label {
+                    text: "Avg. Speed"
+                    font.pixelSize: 14
+                    color: "#FFFFFF"
+                    horizontalAlignment: Text.AlignHCenter
+                }
             }
         }
+
 
         /*Left Side Icons*/
         Image {
@@ -640,98 +664,6 @@ ApplicationWindow {
                     opacity: 0.8
                     color: "#FFFFFF"
                     Layout.alignment: Qt.AlignHCenter
-                }
-            }
-        }
-
-        ColumnLayout{
-            spacing: 40
-
-            anchors{
-                verticalCenter: parent.verticalCenter
-                right: parent.right
-                rightMargin: parent.width / 6
-            }
-
-            RowLayout{
-                spacing: 30
-                Image {
-                    width: 72
-                    height: 50
-                    source: "qrc:/assets/road.svg"
-                }
-
-                ColumnLayout{
-                    Label{
-                        text: "188 KM"
-                        font.pixelSize: 30
-                        font.family: "Inter"
-                        font.bold: Font.Normal
-                        opacity: 0.8
-                        color: "#FFFFFF"
-                    }
-                    Label{
-                        text: "Distance"
-                        font.pixelSize: 20
-                        font.family: "Inter"
-                        font.bold: Font.Normal
-                        opacity: 0.8
-                        color: "#FFFFFF"
-                    }
-                }
-            }
-            RowLayout{
-                spacing: 30
-                Image {
-                    width: 72
-                    height: 78
-                    source: "qrc:/assets/fuel.svg"
-                }
-
-                ColumnLayout{
-                    Label{
-                        text: "34 mpg"
-                        font.pixelSize: 30
-                        font.family: "Inter"
-                        font.bold: Font.Normal
-                        opacity: 0.8
-                        color: "#FFFFFF"
-                    }
-                    Label{
-                        text: "Avg. Fuel Usage"
-                        font.pixelSize: 20
-                        font.family: "Inter"
-                        font.bold: Font.Normal
-                        opacity: 0.8
-                        color: "#FFFFFF"
-                    }
-                }
-            }
-            RowLayout{
-                spacing: 30
-                Image {
-                    width: 72
-                    height: 72
-                    source: "qrc:/assets/speedometer.svg"
-                }
-
-                ColumnLayout{
-                    Label{
-                        text: "78 mph"
-                        font.pixelSize: 30
-                        font.family: "Inter"
-                        font.bold: Font.Normal
-                        opacity: 0.8
-                        color: "#FFFFFF"
-                    }
-                    Label{
-                        text: "Avg. Speed"
-                        font.pixelSize: 20
-                        font.family: "Inter"
-                        font.bold: Font.Normal
-                        opacity: 0.8
-                        color: "#FFFFFF"
-                    }
                 }
             }
         }
