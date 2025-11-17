@@ -1,4 +1,6 @@
-QT += quick qml
+QT += quick qml quickcontrols2
+QML_IMPORT_PATH += /usr/lib/x86_64-linux-gnu/qt5/qml
+
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
