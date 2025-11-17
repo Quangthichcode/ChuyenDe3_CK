@@ -145,12 +145,13 @@ ApplicationWindow {
             id: speedLabel
             width: 450
             height: 450
+            //anchors.bottomMargin: 90
             property bool accelerating
             value: accelerating ? maximumValue : 0
             maximumValue: 250
 
             anchors.top: parent.top
-            anchors.topMargin:Math.floor(parent.height * 0.25)
+            anchors.topMargin:Math.floor(parent.height * 0.18)
             anchors.horizontalCenter: parent.horizontalCenter
 
             Component.onCompleted: forceActiveFocus()
