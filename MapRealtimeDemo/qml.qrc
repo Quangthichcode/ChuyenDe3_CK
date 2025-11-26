@@ -1,8 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>icon/car_icon-topView.svg</file>
-        <file>../WorkSpace/ChuyenDe3_ES_2025_2026/Qt/Lab05/img/icons/Road/car.png</file>
         <file>icon/car-removebg-preview.png</file>
+        <file>icon/final_location.png</file>
     </qresource>
 </RCC>

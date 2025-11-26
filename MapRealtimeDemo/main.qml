@@ -173,13 +173,13 @@ Window {
                 coordinate: routeQuery.waypoints.length > 0 ? routeQuery.waypoints[0] : QtPositioning.coordinate(0,0)
                 visible: routeQuery.waypoints.length > 0
                 anchorPoint.x: sourceItem.width/2; anchorPoint.y: sourceItem.height
-                sourceItem: Image { source: "https://img.icons8.com/color/48/marker.png"; width: 40; height: 40 }
+                sourceItem: Image { source: "qrc:/icon/final_location.png"; width: 40; height: 40 }
             }
             MapQuickItem {
                 coordinate: routeQuery.waypoints.length > 1 ? routeQuery.waypoints[1] : QtPositioning.coordinate(0,0)
                 visible: routeQuery.waypoints.length > 1
                 anchorPoint.x: sourceItem.width/2; anchorPoint.y: sourceItem.height
-                sourceItem: Image { source: "https://img.icons8.com/fluency/48/finish-flag.png"; width: 40; height: 40 }
+                sourceItem: Image { source: "qrc:/icon/final_location.png"; width: 40; height: 40 }
             }
 
             MapQuickItem {
@@ -432,7 +432,7 @@ Window {
                     else if (textLower.includes("u-turn"))
                         iconTurn.source = "https://img.icons8.com/ios-filled/50/ffffff/u-turn.png"
                     else
-                        iconTurn.source = "https://img.icons8.com/ios-filled/50/ffffff/straight.png"
+                        iconTurn.source = "https://img.icons8.com/ios-filled/50/ffffff/long-arrow-up.png"
 
                     break
                 }
@@ -453,7 +453,7 @@ Window {
         AnimatedImage {
             id: gifPlayer
             // Dán link GIF bạn đã cung cấp vào đây
-            source: "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZTQzNzVsZmd0MDlldWd4bTVwZzVtNGs4czZpbzFmaGEwdGdoMnVveCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WsdtV7MsWiEUzgJjJ1/giphy.gif"
+            source: "https://i.pinimg.com/originals/46/1b/c3/461bc3941474e17e43c4bc0c2e4c3af5.gif"
 
             anchors.fill: parent
             fillMode: Image.PreserveAspectFit // Giữ tỉ lệ, có thể đổi thành Fill để tràn màn hình

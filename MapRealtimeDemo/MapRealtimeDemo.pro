@@ -22,4 +22,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    icon/car_icon-topView.svg
+    icon/final_location.png
