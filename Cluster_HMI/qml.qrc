@@ -34,5 +34,8 @@
         <file>assets/SecondRightIcon_red.svg</file>
         <file>assets/thirdRightIcon_red.svg</file>
         <file>assets/FourthRightIcon_red.svg</file>
+        <file>icon/car-removebg-preview.png</file>
+        <file>icon/final_location.png</file>
     </qresource>
+    <qresource prefix="/icon  "/>
 </RCC>

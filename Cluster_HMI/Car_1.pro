@@ -25,3 +25,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
 	radialbar.h
+
+DISTFILES += \
+    icon/car-removebg-preview.png \
+    icon/final_location.png
