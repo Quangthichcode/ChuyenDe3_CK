@@ -171,6 +171,7 @@ Window {
                     Switch {
                         id: screenSwitch
                         checked: false
+                        focusPolicy: Qt.NoFocus
 
                         indicator: Rectangle {
                             implicitWidth: 48
