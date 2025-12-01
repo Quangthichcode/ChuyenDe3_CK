@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>icon/car-removebg-preview.png</file>
+        <file>icon/final_location.png</file>
+    </qresource>
+</RCC>
