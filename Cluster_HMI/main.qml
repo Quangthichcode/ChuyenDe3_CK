@@ -153,157 +153,12 @@ Window {
                     }
                 }
                 // Serial Control Panel
-                Rectangle {
-                    id: serialPanel
-                    width: 350
-                    height: 200
-                    color: "#cc000000"
-                    radius: 15
-                    anchors.top: parent.top
-                    anchors.right: parent.right
-                    anchors.margins: 20
-                    z: 100
 
-                    Column {
-                        anchors.centerIn: parent
-                        spacing: 15
-                        width: parent.width - 40
-
-                        Text {
-                            text: "🔌 ESP32 Connection"
-                            color: "white"
-                            font.bold: true
-                            font.pixelSize: 16
-                            anchors.horizontalCenter: parent.horizontalCenter
-                        }
-
-                        Row {
-                            spacing: 10
-                            anchors.horizontalCenter: parent.horizontalCenter
-
-                            Rectangle {
-                                width: 12
-                                height: 12
-                                radius: 6
-                                color: serialReader.connected ? "#4CAF50" : "#f44336"
-
-                                SequentialAnimation on opacity {
-                                    running: serialReader.connected
-                                    loops: Animation.Infinite
-                                    NumberAnimation { to: 0.3; duration: 500 }
-                                    NumberAnimation { to: 1.0; duration: 500 }
-                                }
-                            }
-
-                            Text {
-                                text: serialReader.connected ? "Connected" : "Disconnected"
-                                color: "white"
-                                font.pixelSize: 14
-                            }
-                        }
-
-                        ComboBox {
-                            id: portCombo
-                            width: parent.width
-                            model: ["Select Port..."]
-
-                            Component.onCompleted: {
-                                var ports = serialReader.availablePorts()
-                                if (ports.length > 0) {
-                                    model = ports
-                                    currentIndex = 0
-                                }
-                            }
-
-                            onActivated: {
-                                var portName = currentText.split(" ")[0]
-                                serialReader.portName = portName
-                            }
-                        }
-
-                        Row {
-                            spacing: 10
-                            width: parent.width
-
-                            Button {
-                                text: "Auto Connect"
-                                width: (parent.width - 10) / 2
-
-                                background: Rectangle {
-                                    color: parent.pressed ? "#1976D2" : "#2196F3"
-                                    radius: 5
-                                }
-
-                                contentItem: Text {
-                                    text: parent.text
-                                    color: "white"
-                                    horizontalAlignment: Text.AlignHCenter
-                                    verticalAlignment: Text.AlignVCenter
-                                }
-
-                                onClicked: {
-                                    serialReader.autoConnect()
-                                }
-                            }
-
-                            Button {
-                                text: serialReader.connected ? "Disconnect" : "Connect"
-                                width: (parent.width - 10) / 2
-
-                                background: Rectangle {
-                                    color: serialReader.connected ? "#f44336" : "#4CAF50"
-                                    radius: 5
-                                }
-
-                                contentItem: Text {
-                                    text: parent.text
-                                    color: "white"
-                                    horizontalAlignment: Text.AlignHCenter
-                                    verticalAlignment: Text.AlignVCenter
-                                }
-
-                                onClicked: {
-                                    if (serialReader.connected) {
-                                        serialReader.disconnectPort()
-                                    } else {
-                                        serialReader.connectToPort()
-                                    }
-                                }
-                            }
-                        }
-
-                        Button {
-                            text: "Refresh Ports"
-                            width: parent.width
-
-                            background: Rectangle {
-                                color: parent.pressed ? "#616161" : "#757575"
-                                radius: 5
-                            }
-
-                            contentItem: Text {
-                                text: parent.text
-                                color: "white"
-                                horizontalAlignment: Text.AlignHCenter
-                                verticalAlignment: Text.AlignVCenter
-                            }
-
-                            onClicked: {
-                                var ports = serialReader.availablePorts()
-                                if (ports.length > 0) {
-                                    portCombo.model = ports
-                                } else {
-                                    portCombo.model = ["No ports found"]
-                                }
-                            }
-                        }
-                    }
-                }
-
-                // Kết nối signals từ SerialReader
+                /// Kết nối signals từ SerialReader
                 Connections {
                     target: serialReader
 
+                    // Biến trở
                     function onSpeedChanged() {
                         speedLabel.value = serialReader.speed
                     }
@@ -312,10 +167,96 @@ Window {
                         radialBar.value = serialReader.battery
                     }
 
+                    // ===== CÁC NÚT NHẤN =====
+
+                    // Đèn pha (top bar)
+                    function onHeadlightChanged() {
+                        headLight.indicator = serialReader.headlight
+                    }
+
+                    // Đèn parking (left side)
+                    function onParkingChanged() {
+                        forthLeftIndicator.parkingLightOn = serialReader.parking
+                    }
+
+                    // Đèn thường (left side)
+                    function onLightChanged() {
+                        thirdLeftIndicator.lightOn = serialReader.light
+                    }
+
+                    // Đèn sương mù (left side)
+                    function onFogChanged() {
+                        firstLeftIndicator.rareLightOn = serialReader.fog
+                    }
+
+                    // Xi nhan trái (giả sử điều khiển đèn low beam)
+                    function onTurnLeftChanged() {
+                        secondLeftIndicator.headLightOn = serialReader.turnLeft
+                    }
+
+                    // Xi nhan phải (right side icons)
+                    function onTurnRightChanged() {
+                        // Điều khiển tất cả icon bên phải
+                        secondRightIndicator.indicator = !serialReader.turnRight
+                    }
+
+                    // Dây an toàn (right side)
+                    function onSeatbeltChanged() {
+                        firstRightIndicator.sheetBelt = serialReader.seatbelt
+                    }
+
+                    // Cảnh báo - có thể dùng cho road lines
+                    function onWarning1Changed() {
+                        leftRoad.visible = serialReader.warning1
+                    }
+
+                    function onWarning2Changed() {
+                        rightRoad.visible = serialReader.warning2
+                    }
+
                     function onErrorOccurred(error) {
                         console.error("Serial Error:", error)
                     }
                 }
+                // AUTO-CONNECT KHI KHỞI ĐỘNG
+                   Component.onCompleted: {
+                       // Delay 1 giây rồi tự động kết nối
+                       autoConnectTimer.start()
+                   }
+                   Timer {
+                           id: autoConnectTimer
+                           interval: 1000
+                           repeat: false
+                           onTriggered: {
+                               console.log("Auto-connecting to ESP32...")
+                               var success = serialReader.autoConnect()
+
+                               if (success) {
+                                   console.log("✅ Connected!")
+                               } else {
+                                   console.log("❌ ESP32 not found, retrying...")
+                                   // Thử lại sau 3 giây
+                                   retryTimer.start()
+                               }
+                           }
+                       }
+                   Timer {
+                           id: retryTimer
+                           interval: 3000
+                           repeat: true
+                           onTriggered: {
+                               if (!serialReader.connected) {
+                                   console.log("Retrying connection...")
+                                   var success = serialReader.autoConnect()
+                                   if (success) {
+                                       retryTimer.stop()
+                                   }
+                               } else {
+                                   retryTimer.stop()
+                               }
+                           }
+                       }
+
                 // ====== [NÚT SWITCH CHUYỂN MÀN HÌNH] ======
                 Row {
                     anchors.top: parent.top
@@ -838,7 +779,7 @@ Window {
                 }
             }
 
-            Image {
+              Image {
                 id: secondRightIndicator
                 property bool indicator: true
                 width: 56.83
@@ -870,7 +811,7 @@ Window {
                 anchors.right: parent.right
                 anchors.rightMargin: 100
                 anchors.verticalCenter: speedLabel.verticalCenter
-                source: sheetBelt ? "qrc:/assets/FirstRightIcon.svg" : "qrc:/assets/FirstRightIcon_grey.svg"
+                source: sheetBelt ? "qrc:/assets/FirstRightIcon_grey.svg" : "qrc:/assets/FirstRightIcon.svg"
                 Behavior on sheetBelt { NumberAnimation { duration: 300 }}
 
                 MouseArea{
