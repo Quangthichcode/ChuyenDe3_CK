@@ -402,38 +402,44 @@ qrc_qml.cpp: ../../qml.qrc \
 		../../main.qml \
 		../../icon/car-removebg-preview.png \
 		../../icon/final_location.png \
-		../../assets/road.svg \
-		../../assets/Parking_lights_white.svg \
-		../../assets/tickmark.svg \
-		../../assets/Model\ 3.svg \
-		../../assets/background.png \
-		../../assets/car.png \
-		../../assets/Low_beam_headlights_white.svg \
-		../../assets/FirstRightIcon.svg \
 		../../assets/FourthRightIcon.svg \
-		../../assets/SecondRightIcon_red.svg \
-		../../assets/FourthRightIcon_red.svg \
-		../../assets/Rare_fog_lights_red.svg \
-		../../assets/Dashboard.svg \
-		../../assets/Lights.svg \
-		../../assets/Model\ 3.png \
-		../../assets/Vector\ 1.svg \
-		../../assets/Vector\ 2.svg \
-		../../assets/Rare\ fog\ lights.svg \
-		../../assets/thirdRightIcon.svg \
 		../../assets/needle.svg \
-		../../assets/fuel.svg \
-		../../assets/Light_White.svg \
+		../../assets/Rare_fog_lights_red.svg \
+		../../assets/Parking_lights_white.svg \
+		../../assets/car.png \
+		../../assets/thirdRightIcon.svg \
 		../../assets/speedometer.svg \
-		../../assets/background.svg \
-		../../assets/FirstRightIcon_grey.svg \
-		../../assets/SecondRightIcon.svg \
-		../../assets/Vector\ 70.svg \
-		../../assets/Low\ beam\ headlights.svg \
 		../../assets/Parking\ lights.svg \
+		../../assets/Light_White.svg \
+		../../assets/SecondRightIcon.svg \
 		../../assets/Car.svg \
+		../../assets/newcar.svg \
+		../../assets/Lights.svg \
+		../../assets/xinhantraibat.svg \
+		../../assets/xinhanphaibat.svg \
+		../../assets/background.svg \
+		../../assets/fuel.svg \
+		../../assets/Model\ 3.svg \
+		../../assets/FirstRightIcon_grey.svg \
+		../../assets/Rare\ fog\ lights.svg \
+		../../assets/ph_engine-red.svg \
+		../../assets/tickmark.svg \
+		../../assets/Dashboard.svg \
+		../../assets/Vector\ 2.svg \
+		../../assets/xinhanphai.svg \
+		../../assets/SecondRightIcon_red.svg \
+		../../assets/Vector\ 70.svg \
+		../../assets/Vector\ 1.svg \
+		../../assets/background.png \
+		../../assets/Low_beam_headlights_white.svg \
+		../../assets/xinhantrai.svg \
+		../../assets/road.svg \
+		../../assets/Model\ 3.png \
+		../../assets/FirstRightIcon.svg \
+		../../assets/Low\ beam\ headlights.svg \
 		../../assets/thirdRightIcon_red.svg \
-		../../assets/newcar.svg
+		../../assets/FourthRightIcon_red.svg \
+		../../assets/ph_engine-bold.svg
 	/usr/lib/qt5/bin/rcc -name qml ../../qml.qrc -o qrc_qml.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h

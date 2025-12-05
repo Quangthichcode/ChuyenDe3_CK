@@ -141,7 +141,7 @@ Window {
                     anchors.topMargin: 25
                     anchors.leftMargin: 230
                     anchors.left: parent.left
-                    source: indicator ? "qrc:/assets/Low beam headlights.svg" : "qrc:/assets/Low_beam_headlights_white.svg"
+                    //source: indicator ? "qrc:/assets/Low beam headlights.svg" : "qrc:/assets/Low_beam_headlights_white.svg"
                     Behavior on indicator {
                         NumberAnimation {
                             duration: 300
@@ -171,12 +171,12 @@ Window {
 
                     // Đèn pha (top bar)
                     function onHeadlightChanged() {
-                        headLight.indicator = serialReader.headlight
+                        secondLeftIndicator.headLightOn = serialReader.headlight
                     }
 
                     // Đèn parking (left side)
                     function onParkingChanged() {
-                        forthLeftIndicator.parkingLightOn = serialReader.parking
+                        thirdLeftIndicator.lightOn = serialReader.parking
                     }
 
                     // Đèn thường (left side)
@@ -188,18 +188,15 @@ Window {
                     function onFogChanged() {
                         firstLeftIndicator.rareLightOn = serialReader.fog
                     }
-
-                    // Xi nhan trái (giả sử điều khiển đèn low beam)
+                    // Xi nhan trái
                     function onTurnLeftChanged() {
-                        secondLeftIndicator.headLightOn = serialReader.turnLeft
-                    }
-
-                    // Xi nhan phải (right side icons)
+                           forthLeftIndicator.parkingLightOn = !serialReader.turnLeft
+                       }
+                    // Xi nhan phải
                     function onTurnRightChanged() {
                         // Điều khiển tất cả icon bên phải
-                        secondRightIndicator.indicator = !serialReader.turnRight
+                        forthRightIndicator.indicator = !serialReader.turnRight
                     }
-
                     // Dây an toàn (right side)
                     function onSeatbeltChanged() {
                         firstRightIndicator.sheetBelt = serialReader.seatbelt
@@ -207,11 +204,11 @@ Window {
 
                     // Cảnh báo - có thể dùng cho road lines
                     function onWarning1Changed() {
-                        leftRoad.visible = serialReader.warning1
+                        secondRightIndicator.indicator = serialReader.warning1
                     }
 
                     function onWarning2Changed() {
-                        rightRoad.visible = serialReader.warning2
+                        thirdRightIndicator.indicator = serialReader.warning2
                     }
 
                     function onErrorOccurred(error) {
@@ -647,7 +644,7 @@ Window {
                 anchors.leftMargin: 175
                 anchors.bottom: thirdLeftIndicator.top
                 anchors.bottomMargin: 25
-                source: parkingLightOn ? "qrc:/assets/Parking lights.svg" : "qrc:/assets/Parking_lights_white.svg"
+                source: parkingLightOn ? "qrc:/assets/xinhantrai.svg" : "qrc:/assets/xinhantraibat.svg"
                 Behavior on parkingLightOn {
                     NumberAnimation {
                         duration: 300
@@ -735,13 +732,13 @@ Window {
             Image {
                 id: forthRightIndicator
                 property bool indicator: true
-                width: 56.83
-                height: 36.17
+                width: 72
+                height: 62
                 anchors.right: parent.right
                 anchors.rightMargin: 195
                 anchors.bottom: thirdRightIndicator.top
                 anchors.bottomMargin: 50
-                source: indicator ? "qrc:/assets/FourthRightIcon.svg" : "qrc:/assets/FourthRightIcon_red.svg"
+                source: indicator ? "qrc:/assets/xinhanphai.svg" : "qrc:/assets/xinhanphaibat.svg"
                 Behavior on indicator {
                     NumberAnimation {
                         duration: 300
@@ -788,7 +785,7 @@ Window {
                 anchors.rightMargin: 125
                 anchors.bottom: firstRightIndicator.top
                 anchors.bottomMargin: 50
-                source: indicator ? "qrc:/assets/SecondRightIcon.svg" : "qrc:/assets/SecondRightIcon_red.svg"
+                source: indicator ? "qrc:/assets/FourthRightIcon.svg" : "qrc:/assets/FourthRightIcon_red.svg"
                 Behavior on indicator {
                     NumberAnimation {
                         duration: 300

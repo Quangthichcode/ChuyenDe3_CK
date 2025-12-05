@@ -36,6 +36,12 @@
         <file>assets/FourthRightIcon_red.svg</file>
         <file>icon/car-removebg-preview.png</file>
         <file>icon/final_location.png</file>
+        <file>assets/xinhanphaibat.svg</file>
+        <file>assets/xinhantrai.svg</file>
+        <file>assets/xinhantraibat.svg</file>
+        <file>assets/xinhanphai.svg</file>
+        <file>assets/ph_engine-bold.svg</file>
+        <file>assets/ph_engine-red.svg</file>
     </qresource>
     <qresource prefix="/icon  "/>
 </RCC>
